@@ -25,6 +25,7 @@ body {
     display: flex;
     justify-content: center;
     padding: 2rem 1rem;
+    transition: background 1s ease;
 }
 
 .container {
@@ -34,6 +35,12 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Header & Search */
@@ -70,6 +77,13 @@ header {
     color: var(--text-main);
     outline: none;
     font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+#cityInput:focus {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
 }
 
 #cityInput::placeholder {
@@ -88,12 +102,19 @@ header {
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     z-index: 100;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .suggestion-item {
     padding: 0.75rem 1.5rem;
     cursor: pointer;
     border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: background 0.2s ease;
 }
 
 .suggestion-item:hover {
@@ -118,11 +139,18 @@ header {
     align-items: center;
     text-align: center;
     gap: 2rem;
+    animation: contentFadeIn 0.6s ease-out;
+}
+
+@keyframes contentFadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 .location-info h1 {
     font-size: 3.5rem;
     font-weight: 800;
+    transition: all 0.3s ease;
 }
 
 .location-info p {
@@ -170,6 +198,12 @@ header {
     padding: 1.5rem;
     border-radius: 1.5rem;
     border: 1px solid var(--border);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.5);
 }
 
 .stat-card .label {
@@ -212,6 +246,12 @@ header {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.forecast-card:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
 }
 
 .forecast-card .day {
