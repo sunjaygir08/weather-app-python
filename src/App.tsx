@@ -43,8 +43,6 @@ export default function App() {
       navigator.geolocation.getCurrentPosition(
         async (position) => {
           try {
-            // Reverse geocode to get city name (optional, but nice)
-            // For now, just use coordinates and label as "Your Location"
             loadWeather(position.coords.latitude, position.coords.longitude, "Your Location", "");
           } catch (err) {
             console.error("Geolocation error:", err);
@@ -60,7 +58,6 @@ export default function App() {
   const getBackgroundClass = () => {
     if (!weather) return "from-sky-400 to-blue-500";
     const code = weather.current.weatherCode;
-    // Using a consistent light blue theme as requested, with subtle variations for weather
     if (code === 0) return "from-sky-300 to-blue-400"; // Clear
     if (code >= 1 && code <= 3) return "from-sky-400 to-blue-500"; // Partly cloudy
     if (code >= 45 && code <= 48) return "from-blue-200 to-sky-400"; // Fog
@@ -133,7 +130,7 @@ export default function App() {
       </motion.div>
 
       <footer className="mt-auto pt-12 text-blue-900/40 text-xs font-bold tracking-widest uppercase">
-        Website working on OPEN-METEO API KEY
+        Weather data provided by Open-Meteo
       </footer>
     </div>
   );
