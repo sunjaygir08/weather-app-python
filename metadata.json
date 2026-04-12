@@ -1,0 +1,5 @@
+{
+  "name": "SkyCast Weather",
+  "description": "A beautiful, real-time weather application with city search and detailed forecasts.",
+  "requestFramePermissions": ["geolocation"]
+}
