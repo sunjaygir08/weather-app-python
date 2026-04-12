@@ -1,13 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyCast Weather</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app" class="theme-light-blue">
+        <div class="container">
+            <header>
+                <p class="brand">SkyCast</p>
+                <div class="search-container">
+                    <input type="text" id="cityInput" placeholder="Search for a city...">
+                    <div id="suggestions" class="suggestions hidden"></div>
+                </div>
+            </header>
 
+            <main id="weatherContent" class="hidden">
+                <section class="current-weather">
+                    <div class="location-info">
+                        <h1 id="cityName">London</h1>
+                        <p id="countryName">United Kingdom</p>
+                    </div>
+                    <div class="main-temp">
+                        <div id="weatherIcon" class="icon-large"></div>
+                        <div class="temp-display">
+                            <span id="currentTemp">20</span><span class="unit">°</span>
+                            <p id="weatherDesc">Clear Sky</p>
+                        </div>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <p class="label">Feels Like</p>
+                            <p id="feelsLike" class="value">18°</p>
+                        </div>
+                        <div class="stat-card">
+                            <p class="label">Humidity</p>
+                            <p id="humidity" class="value">45%</p>
+                        </div>
+                        <div class="stat-card">
+                            <p class="label">Wind</p>
+                            <p id="windSpeed" class="value">12 km/h</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="forecast">
+                    <h2>7-Day Forecast</h2>
+                    <div id="forecastGrid" class="forecast-grid"></div>
+                </section>
+            </main>
+
+            <div id="loader" class="loader">
+                <div class="spinner"></div>
+                <p>Fetching weather...</p>
+            </div>
+
+            <footer>
+                Website working on OPEN-METEO API KEY
+            </footer>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
