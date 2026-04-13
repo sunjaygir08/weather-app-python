@@ -9,6 +9,7 @@ body {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
   color: #333;
+  transition: background 0.6s ease;
 }
 
 .app-container {
@@ -17,18 +18,47 @@ body {
   flex-direction: column;
   padding: 20px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .header {
   text-align: center;
   margin-bottom: 40px;
   color: white;
+  animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .brand {
   font-size: 28px;
   font-weight: 800;
   margin-bottom: 20px;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.brand:hover {
+  transform: scale(1.05);
+  text-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .search-container {
@@ -45,12 +75,17 @@ body {
   border-radius: 8px;
   font-size: 16px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s;
+  transition: all 0.3s ease;
 }
 
 .search-container input:focus {
   outline: none;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.search-container input::placeholder {
+  transition: color 0.3s ease;
 }
 
 .suggestions {
@@ -99,6 +134,24 @@ body {
   padding: 40px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   width: 100%;
+  animation: slideUp 0.7s ease-out;
+  transition: all 0.3s ease;
+}
+
+.weather-card:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .location-info {
@@ -110,6 +163,18 @@ body {
   font-size: 32px;
   color: #333;
   margin-bottom: 8px;
+  animation: fadeInScale 0.8s ease-out 0.2s both;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .location-info p {
@@ -127,6 +192,22 @@ body {
 
 .weather-icon {
   font-size: 80px;
+  animation: bounce 2s infinite;
+  transition: transform 0.3s ease;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.weather-icon:hover {
+  animation: none;
+  transform: scale(1.2);
 }
 
 .temp-display {
@@ -137,6 +218,12 @@ body {
   font-size: 64px;
   font-weight: 800;
   color: #667eea;
+  animation: fadeInScale 0.8s ease-out 0.4s both;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.temp:hover {
+  transform: scale(1.1);
 }
 
 .description {
@@ -157,6 +244,26 @@ body {
   padding: 16px;
   border-radius: 8px;
   text-align: center;
+  animation: fadeInUp 0.6s ease-out;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.stat-card:hover {
+  background: #e8e8e8;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .stat-card .label {
@@ -177,6 +284,13 @@ body {
   padding: 30px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   width: 100%;
+  animation: slideUp 0.7s ease-out 0.2s both;
+  transition: all 0.3s ease;
+}
+
+.forecast-section:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
 }
 
 .forecast-section h2 {
@@ -195,6 +309,15 @@ body {
   border-radius: 8px;
   padding: 16px;
   text-align: center;
+  animation: fadeInUp 0.6s ease-out;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.forecast-item:hover {
+  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .forecast-item .day {
@@ -208,6 +331,13 @@ body {
   font-size: 35px;
   margin: 12px 0;
   display: block;
+  animation: bounce 3s infinite;
+  transition: transform 0.3s ease;
+}
+
+.forecast-item:hover .icon {
+  animation: none;
+  transform: scale(1.3);
 }
 
 .forecast-item .temps {
@@ -229,6 +359,7 @@ body {
 .loader {
   text-align: center;
   color: white;
+  animation: fadeIn 0.5s ease-in;
 }
 
 .spinner {
@@ -259,6 +390,12 @@ body {
   color: white;
   margin-top: 40px;
   font-size: 14px;
+  animation: fadeIn 1s ease-in 0.5s both;
+  transition: all 0.3s ease;
+}
+
+.footer:hover {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Responsive design */

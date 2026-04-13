@@ -75,6 +75,23 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`✓ Server running at http://localhost:${PORT}`);
-  console.log(`✓ Open your browser and navigate to http://localhost:${PORT}`);
+  console.log('\n' + '='.repeat(60));
+  console.log('  🌤️  SKYCAST WEATHER SERVER STARTED');
+  console.log('='.repeat(60));
+  console.log(`\n  ✓ Server is running at: http://localhost:${PORT}`);
+  console.log(`  ✓ API endpoints available:`);
+  console.log(`    - GET  /api/weather?lat=...&lon=...`);
+  console.log(`    - GET  /api/search-cities?query=...`);
+  console.log(`\n  📖 Open your browser now: http://localhost:${PORT}`);
+  console.log(`\n  Press CTRL+C to stop the server\n`);
+  console.log('='.repeat(60) + '\n');
+}).on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`\n❌ ERROR: Port ${PORT} is already in use!`);
+    console.error('   Another app is using this port.');
+    console.error('   Try: taskkill /IM node.exe /F');
+  } else {
+    console.error('Server error:', err);
+  }
+  process.exit(1);
 });
